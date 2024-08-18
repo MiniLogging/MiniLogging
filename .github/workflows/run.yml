@@ -2,7 +2,7 @@ name: Grab mini index
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 */6 * * *"
   push:
     paths:
       - '**.py'
@@ -29,12 +29,13 @@ jobs:
       run: python main.py
       
     - name: Update file
+      continue-on-error: true
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git pull origin main
         git add 'gamecode'
-        git commit --allow-empty -m "Updated"
+        git commit -m "Updated"
         git push origin main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
