@@ -34,7 +34,7 @@ jobs:
         git config --local user.name "github-actions[bot]"
         git pull origin main
         git add 'gamecode'
-        git commit -m "Updated"
+        git commit --allow-empty -m "Updated"
         git push origin main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
