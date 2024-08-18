@@ -1,0 +1,33 @@
+name: Grab game list
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  push:
+    paths:
+      - '**.py'
+      - '**.yml'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: Run run.py
+      run: python run.py
+      
+    - name: Update file
+      run: |
+        git pull origin main
+        git add 'gamecode'
+        git commit -m "Updated"
+        git push origin main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
