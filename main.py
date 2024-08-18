@@ -21,3 +21,4 @@ with open('gamecode/index.js','w', encoding="utf-8") as f:
 with open('gamecode/index formated.js','w', encoding="utf-8") as f:
     formatted_code = jsbeautifier.beautify(js_code)
     f.write(formatted_code)
+    
