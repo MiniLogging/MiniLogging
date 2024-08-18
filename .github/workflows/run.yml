@@ -25,6 +25,7 @@ jobs:
       
     - name: Update file
       run: |
+        pip jsbeautifier
         git pull origin main
         git add 'gamecode'
         git commit -m "Updated"
