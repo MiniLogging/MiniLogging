@@ -20,8 +20,8 @@ jobs:
       with:
         python-version: 3.x
 
-    - name: Run run.py
-      run: python run.py
+    - name: Run main.py
+      run: python main.py
       
     - name: Update file
       run: |
