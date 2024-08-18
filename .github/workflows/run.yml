@@ -1,4 +1,4 @@
-name: Grab game list
+name: Grab mini index
 
 on:
   schedule:
