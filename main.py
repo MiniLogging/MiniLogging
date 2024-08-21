@@ -26,6 +26,6 @@ with open('gamecode/index formated.js','w', encoding="utf-8") as f:
     f.write(formatted_code)
 
 with open('temp_commit.txt','w') as f:
-    data = f'{js_name} {changed_day}'
+    data = f'{changed_day} {js_name}'
     print(data)
     f.write(data)
