@@ -11,7 +11,8 @@ def use_regex(input_text):
 
 for line in mainsite.split('\n'):
     if '"/assets/index-' in line and '.js' in line:
-        link = f'https://miniblox.io/assets/{use_regex(line.strip())}'
+        js_name = use_regex(line.strip())
+        link = f'https://miniblox.io/assets/{js_name}'
 
 js_code_raw = requests.get(link)
 changed_day = js_code_raw.headers['last-modified']
@@ -25,6 +26,6 @@ with open('gamecode/index formated.js','w', encoding="utf-8") as f:
     f.write(formatted_code)
 
 with open('temp_commit.txt','w') as f:
-    data = f'{link} {changed_day}'
+    data = f'{js_name} {changed_day}'
     print(data)
     f.write(data)
