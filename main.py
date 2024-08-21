@@ -24,4 +24,7 @@ with open('gamecode/index formated.js','w', encoding="utf-8") as f:
     formatted_code = jsbeautifier.beautify(js_code)
     f.write(formatted_code)
 
-print(link, changed_day)
+with open('temp_commit.txt','w') as f:
+    data = f'{link} {changed_day}'
+    print(data)
+    f.write(data)
