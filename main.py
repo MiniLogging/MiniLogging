@@ -13,12 +13,15 @@ for line in mainsite.split('\n'):
     if '"/assets/index-' in line and '.js' in line:
         link = f'https://miniblox.io/assets/{use_regex(line.strip())}'
 
-print('got','the','link:',link)
-js_code = requests.get(link).text
+js_code_raw = requests.get(link)
+changed_day = js_code_raw.headers['last-modified']
+js_code = js_code_raw.text
+
 with open('gamecode/index.js','w', encoding="utf-8") as f:
     f.write(js_code)
 
 with open('gamecode/index formated.js','w', encoding="utf-8") as f:
     formatted_code = jsbeautifier.beautify(js_code)
     f.write(formatted_code)
-    
+
+print(link, changed_day)
