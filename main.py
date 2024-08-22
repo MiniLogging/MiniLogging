@@ -12,7 +12,7 @@ def use_regex(input_text):
 for line in mainsite.split('\n'):
     if '"/assets/' in line and '.js' in line:
         js_name = use_regex(line.strip())
-        link = f'https://miniblox.io/assets{js_name}'
+        link = f'https://miniblox.io{js_name}'
 
 js_code_raw = requests.get(link)
 changed_day = js_code_raw.headers['last-modified']
