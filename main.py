@@ -6,13 +6,13 @@ requests = session()
 mainsite = requests.get('https://miniblox.io').text
 
 def use_regex(input_text):
-    pattern = re.compile(r"index-[A-Za-z0-9]+\.js", re.IGNORECASE)
+    pattern = re.compile(r'/[^"]*\.js', re.IGNORECASE)
     return pattern.search(input_text).group()
 
 for line in mainsite.split('\n'):
     if '"/assets/' in line and '.js' in line:
         js_name = use_regex(line.strip())
-        link = f'https://miniblox.io/assets/{js_name}'
+        link = f'https://miniblox.io/assets{js_name}'
 
 js_code_raw = requests.get(link)
 changed_day = js_code_raw.headers['last-modified']
