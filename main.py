@@ -10,7 +10,7 @@ def use_regex(input_text):
     return pattern.search(input_text).group()
 
 for line in mainsite.split('\n'):
-    if '"/assets/index-' in line and '.js' in line:
+    if '"/assets/' in line and '.js' in line:
         js_name = use_regex(line.strip())
         link = f'https://miniblox.io/assets/{js_name}'
 
