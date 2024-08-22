@@ -34,8 +34,8 @@ jobs:
     - name: Update file
       continue-on-error: true
       run: |
-        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
+        git config --local user.email "victoryqwei@gmail.com"
+        git config --local user.name "Victory[bot]"
         git pull origin main
         git add 'gamecode'
         git commit -F temp_commit.txt
