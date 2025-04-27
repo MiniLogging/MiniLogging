@@ -18,10 +18,19 @@ js_code_raw = requests.get(link)
 changed_day = js_code_raw.headers['last-modified']
 js_code = js_code_raw.text
 
+# imma save github some work and not deal with formatting if not needed
+try:
+    with open('gamecode/index.js','r', encoding="utf-8") as f:
+        old_js_code = f.read()
+except FileNotFoundError:
+    old_js_code = ''
+
+if js_code == old_js_code: exit()
+
 with open('gamecode/index.js','w', encoding="utf-8") as f:
     f.write(js_code)
 
-with open('gamecode/index formated.js','w', encoding="utf-8") as f:
+with open('gamecode/index formatted.js','w', encoding="utf-8") as f:
     formatted_code = jsbeautifier.beautify(js_code)
     f.write(formatted_code)
 
