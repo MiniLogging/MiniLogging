@@ -22,10 +22,10 @@ js_code = js_code_raw.text
 try:
     with open('gamecode/index.js','r', encoding="utf-8") as f:
         old_js_code = f.read()
+        if js_code == old_js_code: exit()
 except FileNotFoundError:
-    old_js_code = ''
+    pass
 
-if js_code == old_js_code: exit()
 
 with open('gamecode/index.js','w', encoding="utf-8") as f:
     f.write(js_code)
