@@ -35,6 +35,10 @@ with open('gamecode/index formatted.js','w', encoding="utf-8") as f:
     f.write(formatted_code)
 
 with open('temp_commit.txt','w') as f:
-    data = f'{changed_day} {js_name}'
+    import email.utils as utils
+    parsed_time = utils.parsedate_to_datetime(changed_day)
+    discord_timestamp = int(parsed_time.timestamp())
+    formatted = f"<t:{discord_timestamp}>"
+    data = f'{formatted} {js_name}\n{changed_day}'
     print(data)
     f.write(data)
