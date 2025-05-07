@@ -2,7 +2,7 @@ name: Grab mini index
 
 on:
   schedule:
-    - cron: "5 * * * *"
+    - cron: "0 * * * *"
   push:
     branches:
       - main
