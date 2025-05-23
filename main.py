@@ -36,9 +36,13 @@ with open('gamecode/index formatted.js','w', encoding="utf-8") as f:
 
 with open('temp_commit.txt','w') as f:
     import email.utils as utils
+
+    version_reg = re.compile(r'VERSION\$1="([^"]*)"', re.IGNORECASE)
+    version = version_reg.search(js_code)[1]
+    
     parsed_time = utils.parsedate_to_datetime(changed_day)
     discord_timestamp = int(parsed_time.timestamp())
     formatted = f"<t:{discord_timestamp}>"
-    data = f'{formatted} {js_name}\n{changed_day}'
+    data = f'{formatted} v{version} {js_name}\n{changed_day}'
     print(data)
     f.write(data)
